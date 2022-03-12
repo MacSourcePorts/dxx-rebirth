@@ -10,12 +10,10 @@ rm -rf ${BUILT_PRODUCTS_DIR}
 #because this port does so much of the work itself all we need to do is 
 #run the build command twice for the two platforms
 rm -rf ${X86_64_BUILD_FOLDER}
-echo /usr/local/bin/scons opengl=1 sdlmixer=1 d1x=1 d2x=1 macos_add_frameworks=0 builddir=${X86_64_BUILD_FOLDER} PKG_CONFIG=/usr/local/bin/pkg-config --config=force
-/usr/local/bin/scons opengl=1 sdlmixer=1 d1x=1 d2x=1 macos_add_frameworks=0 builddir=${X86_64_BUILD_FOLDER} PKG_CONFIG=/usr/local/bin/pkg-config --config=force
+/usr/local/bin/scons opengl=1 sdlmixer=1 d1x=1 d2x=1 macos_add_frameworks=0 builddir=${X86_64_BUILD_FOLDER} PKG_CONFIG=/usr/local/bin/pkg-config --config=force CPPFLAGS=-mmacosx-version-min=10.13 CXXFLAGS=-mmacosx-version-min=10.13 LINKFLAGS=-mmacosx-version-min=10.13 -j$NCPU
 
 rm -rf ${ARM64_BUILD_FOLDER}
-echo scons opengl=1 sdlmixer=1 d1x=1 d2x=1 macos_add_frameworks=0 builddir=${ARM64_BUILD_FOLDER} --config=force
-scons opengl=1 sdlmixer=1 d1x=1 d2x=1 macos_add_frameworks=0 builddir=${ARM64_BUILD_FOLDER} --config=force
+scons opengl=1 sdlmixer=1 d1x=1 d2x=1 macos_add_frameworks=0 builddir=${ARM64_BUILD_FOLDER} --config=force CPPFLAGS=-mmacosx-version-min=10.13 CXXFLAGS=-mmacosx-version-min=10.13 LINKFLAGS=-mmacosx-version-min=10.13 -j$NCPU
 
 mkdir ${BUILT_PRODUCTS_DIR}
 
