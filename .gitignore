@@ -48,3 +48,7 @@ xcuserdata
 # PyCharm generated files #
 ###########################
 .idea
+
+build-x86_64
+build-arm64
+release
